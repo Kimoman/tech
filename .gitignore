@@ -30,3 +30,5 @@ target/classes/app.properties
 target/generated-sources/
 target/generated-test-sources/
 target/test-classes/
+botconfig.txt
+.gitignore
