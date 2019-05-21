@@ -7,22 +7,22 @@ import java.util.Optional;
 public class Utils {
 
     public static boolean hasHello(String s) {
-        return s.matches(".*([П|п][Р|р][И|и][В|в][Е|е][Т|т]).*");
+        return s.matches(".*(привет).*");
     }
 
     public static boolean hasGoodbye(String s) {
-        return s.matches(".*([П|п][О|о][К|к][А|а]).*");
+        return s.matches(".*(пока).*");
     }
 
     public static Optional<String> getHello(MessageContext context) {
         return Optional.ofNullable(context)
-                .filter(c -> hasHello(c.update().getMessage().getText()))
+                .filter(c -> hasHello(c.update().getMessage().getText().toLowerCase()))
                 .map(cxt -> cxt.user().getFirstName() + ", Привет!");
     }
 
     public static Optional<String> getGoodbye(MessageContext context) {
         return Optional.ofNullable(context)
-                .filter(c -> hasGoodbye(c.update().getMessage().getText()))
+                .filter(c -> hasGoodbye(c.update().getMessage().getText().toLowerCase()))
                 .map(cxt -> cxt.user().getFirstName() + ", Пока!");
     }
 
